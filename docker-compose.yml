@@ -1,0 +1,24 @@
+version: '3'
+
+services:
+  service-a:
+    image: msatemplate-service-a:0.0.1-SNAPSHOT
+    ports:
+      - "8081:8080"
+    environment:
+      KAFKA_CLUSTERS_BOOTSTRAPSERVERS: kafka:9092
+    networks:
+      - msa_template_network
+
+  service-b:
+    image: msatemplate-service-b:0.0.1-SNAPSHOT
+    ports:
+      - "8082:8080"
+    environment:
+      KAFKA_CLUSTERS_BOOTSTRAPSERVERS: kafka:9092
+    networks:
+      - msa_template_network
+
+networks:
+  msa_template_network:
+    driver: bridge
