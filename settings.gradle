@@ -2,3 +2,4 @@ rootProject.name = 'MSATemplate'
 
 include 'Service-A'
 include 'Service-B'
+include 'Service-C'

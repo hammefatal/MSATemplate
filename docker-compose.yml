@@ -19,6 +19,15 @@ services:
     networks:
       - msa_template_network
 
+  service-c:
+    image: msatemplate-service-c:0.0.1-SNAPSHOT
+    ports:
+      - "8083:8080"
+    environment:
+      KAFKA_CLUSTERS_BOOTSTRAPSERVERS: kafka:9092
+    networks:
+      - msa_template_network
+
 networks:
   msa_template_network:
     driver: bridge
