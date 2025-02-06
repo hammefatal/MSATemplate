@@ -2,7 +2,6 @@ plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.4.2'
 	id 'io.spring.dependency-management' version '1.1.7'
-	id 'com.palantir.docker' version '0.36.0'
 }
 
 group = 'home.hammefatal.msa'
@@ -43,14 +42,7 @@ bootJar {
 	archiveFileName = rootProject.name.toLowerCase() + "-" + project.name.toLowerCase() + "-" + project.version + ".jar"
 }
 
-docker {
-	// 이미지 이름
-	name rootProject.name.toLowerCase() + "-" + project.name.toLowerCase() + ":" + project.version
-	// 어떤 Dockerfile
-	dockerfile file('../Dockerfile')
-	// 어떤 파일들을 Dockerfile 에 복사할 것인가
-	files tasks.bootJar.outputs.files
-	println "##### Docker task for ${tasks.bootJar.outputs.files.singleFile.name} #####"
-	// Dockerfile 에 전달할 인자
-	buildArgs(['JAR_FILE': tasks.bootJar.outputs.files.singleFile.name])
+bootBuildImage {
+	imageName = rootProject.name.toLowerCase() + "-" + project.name.toLowerCase() + ":" + project.version
+	createdDate = "now"
 }
