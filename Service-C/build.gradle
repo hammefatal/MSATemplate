@@ -39,10 +39,10 @@ tasks.named('test') {
 }
 
 bootJar {
-	archiveFileName = rootProject.name.toLowerCase() + "-" + project.name.toLowerCase() + "-" + project.version + ".jar"
+	archiveFileName = "msatemplate-" + project.name.toLowerCase() + "-" + project.version + ".jar"
 }
 
 bootBuildImage {
-	imageName = rootProject.name.toLowerCase() + "-" + project.name.toLowerCase() + ":" + project.version
+	imageName = "msatemplate-" + project.name.toLowerCase() + ":" + project.version
 	createdDate = "now"
 }
